@@ -32,15 +32,9 @@ Page({
       });
       first = false;
     }
-    //wx.navigateTo({
-    // url: '/pages/basic/scene-basic-animation/index',
-   //  url:'/pages/basic/scene-basic-video/index'
-   // url:'/pages/basic/scene-basic-touch/index'
-   //url:'/pages/basic/scene-basic-shadow/index'
-  // url:'/pages/basic/scene-basic-visible-layer/index'
-  //url:'/pages/basic/scene-basic-envData/index'
-  //url:'/pages/custom/scene-custom-logic/index'
-  //})
+    wx.navigateTo({
+   url:'/pages/basic/scene-basic-shadow/index'
+  })
   },
   onShareAppMessage() {
     return {

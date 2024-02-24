@@ -2,14 +2,8 @@ import {
   core
 } from "dhtml-weixin"
 const xrFrameSystem = wx.getXrFrameSystem()
-const properties = {
-
-}
-const observers = {}
 module.exports = Behavior({
   behaviors: [require("xr")],
-  properties,
-  observers,
   lifetimes: {
     attached() {
       const page = core.Page.current
@@ -72,10 +66,9 @@ module.exports = Behavior({
                 scene.assets.addAsset('post-process', assetId, pp);
                 break}
           default:{
-            // console.error(this.properties.CLASS_NAME )
             this._element = scene.createElement(elementClass, attributes)
-            if(this.properties.id){
-              page.onekit_elements[this.properties.id] = this._element
+            if(this.id){
+              page.onekit_elements[this.id] = this._element
             }
             this.triggerEvent("onekit_add", {
               ui: this

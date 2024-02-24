@@ -1,43 +1,55 @@
-import {core} from "dhtml-weixin"
+import { core } from "dhtml-weixin"
 Component({
   behaviors: [
     require('../components/common/share-behavior').default,
     require("xr")
   ],
   properties: {
-		CLASS_NAME: {
-			type: String,
-			value: "Scene"
+    CLASS_NAME: {
+      type: String,
+      value: "Scene"
     },
     TYPE: {
-			type: String,
-			value: "scene"
-		}
+      type: String,
+      value: "scene"
+    }
   },
   data: {
     loaded: false
   },
   lifetimes: {},
   methods: {
-    async onekit_handleReady({detail}) {
+    async onekit_handleReady({ detail }) {
       const page = core.Page.current
       const scene = detail.value;
       page.onekit_scene = scene
       page.onekit_elements = {}
       page.onekit_assets = {}
+      this.onekit_count = 0
+      this.onekit_count0 = 0
       this._element = scene.getElementById('onekit-root');
-      scene.getElementById = function(id){
+      scene.getElementById = function (id) {
+       // console.error(  page.onekit_elements)
         const element = page.onekit_elements[id]
         return element
       }
       ////////////////////////////////////////
+      const timer = setInterval(() => {
+        if (this.onekit_count0 != this.onekit_count) {
+          this.onekit_count0 = this.onekit_count
+          return
+        }
+        if (this.onekit_count == 0) {
+          return
+        }
+        clearInterval(timer)
+        this.triggerEvent("ready", {
+          value: scene
+        })
+      }, 1000)
 
-      this.triggerEvent("ready",{
-        value:scene
-      })
-      
     },
-    onekit_handleTick:function(){
+    onekit_handleTick: function () {
 
     }
   }
