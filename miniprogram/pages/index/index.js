@@ -33,7 +33,7 @@ Page({
       first = false;
     }
     wx.navigateTo({
-   url:'/pages/basic/scene-basic-shadow/index'
+   url:'/pages/basic/scene-basic-alpha/index'
   })
   },
   onShareAppMessage() {
