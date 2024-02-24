@@ -117,7 +117,7 @@ export default function element2component(xrFrameSystem2, elementClass) {
     const [componentName_no_caml, componentKey_caml] = temp.dataMapping[proName_no_caml]
     const proName_caml = core.String.toHump(proName_no_caml)
     properties[proName_caml] = {
-      type: Boolean | String
+      type: String
     }
 		observers[proName_caml] = function (propValue) {
 			if (!this._element) {

@@ -1,7 +1,7 @@
 import { core } from "dhtml-weixin"
 Component({
   behaviors: [
-    require('../components/common/share-behavior').default,
+    require('./share-behavior').default,
     require("xr")
   ],
   properties: {
@@ -12,12 +12,12 @@ Component({
     TYPE: {
       type: String,
       value: "scene"
-    }
+    },
+    renderSystem:String
   },
   data: {
     loaded: false
   },
-  lifetimes: {},
   methods: {
     async onekit_handleReady({ detail }) {
       const page = core.Page.current

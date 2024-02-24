@@ -8,6 +8,7 @@
   </view>
 
   <pull-down-list
+    wx:key="label"
     wx:for="{{list}}"
     name="{{item.name}}"
     tag="{{item.tag}}"
