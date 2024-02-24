@@ -31,8 +31,6 @@ module.exports = Behavior({
         }else{
           this.triggerEvent("onekit_count")
         }
-        
-        console.error(this.properties.CLASS_NAME)
       }
     },
     /*
