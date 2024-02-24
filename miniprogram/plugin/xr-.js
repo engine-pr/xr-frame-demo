@@ -67,6 +67,7 @@ module.exports = Behavior({
                 break}
           default:{
             this._element = scene.createElement(elementClass, attributes)
+          //  console.error(this.properties.CLASS_NAME,attributes)
             if(this.id){
               page.onekit_elements[this.id] = this._element
             }
