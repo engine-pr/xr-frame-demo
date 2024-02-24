@@ -1,29 +1,34 @@
-<xr-scene ar-system="modes:Hand" bind:ready="handleReady" bind:ar-ready="handleARReady">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-  </xr-assets>
-  <xr-node wx:if="{{arReady}}">
-    <xr-ar-tracker id='tracker' mode="Hand" auto-sync="-1 0 9 4 8 12 16 20">
-      <xr-mesh name="hand" geometry="cube" scale="0.7 0.8 0.1" uniforms="u_baseColorFactor:1 1 1 0.5" states="renderQueue:2500,alphaMode:BLEND"/>
-      <xr-mesh name="wrist" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:1 0 0 1" />
-      <xr-mesh name="joint" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
-      <xr-mesh name="thumb" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
-      <xr-mesh name="index" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
-      <xr-mesh name="middle" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
-      <xr-mesh name="ring" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
-      <xr-mesh name="little" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" ar-system="modes:Hand" bind:ready="handleReady" bind:ar-ready="handleARReady">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+  </my-assets>
+  <my-node wx:if="{{arReady}}">
+    <my-ar-tracker id='tracker' mode="Hand" auto-sync="-1 0 9 4 8 12 16 20">
+      <my-mesh name="hand" geometry="cube" scale="0.7 0.8 0.1" uniforms="u_baseColorFactor:1 1 1 0.5" states="renderQueue:2500,alphaMode:BLEND"/>
+      <my-mesh name="wrist" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:1 0 0 1" />
+      <my-mesh name="joint" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
+      <my-mesh name="thumb" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="index" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="middle" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="ring" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="little" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
 
       <!-- 坐标系提示，单位1 的坐标轴 -->
-      <xr-mesh node-id="mesh-x" position="1 0 0"  scale="2 0.02 0.02" geometry="cube" uniforms="u_baseColorFactor:0.7 0.3 0.3 1" ></xr-mesh>
-      <xr-mesh node-id="mesh-y" position="0 1 0"  scale="0.02 2 0.02" geometry="cube" uniforms="u_baseColorFactor:0.3 0.7 0.3 1"></xr-mesh>
-      <xr-mesh node-id="mesh-z" position="0 0 1"  scale="0.02 0.02 2" geometry="cube" uniforms="u_baseColorFactor:0.3 0.3 0.7 1"></xr-mesh>
-    </xr-ar-tracker>
-    <xr-camera
+      <my-mesh node-id="mesh-x" position="1 0 0"  scale="2 0.02 0.02" geometry="cube" uniforms="u_baseColorFactor:0.7 0.3 0.3 1" ></my-mesh>
+      <my-mesh node-id="mesh-y" position="0 1 0"  scale="0.02 2 0.02" geometry="cube" uniforms="u_baseColorFactor:0.3 0.7 0.3 1"></my-mesh>
+      <my-mesh node-id="mesh-z" position="0 0 1"  scale="0.02 0.02 2" geometry="cube" uniforms="u_baseColorFactor:0.3 0.3 0.7 1"></my-mesh>
+    </my-ar-tracker>
+    <my-camera
       id="camera" node-id="camera" clear-color="0.925 0.925 0.925 1"
       background="ar" is-ar-camera near="0.01"
-    ></xr-camera>
-  </xr-node>
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="1" />
-    <xr-light type="directional" rotation="180 0 0" color="1 1 1" intensity="3" />
-  </xr-node>
-</xr-scene>
+    ></my-camera>
+  </my-node>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="1" />
+    <my-light type="directional" rotation="180 0 0" color="1 1 1" intensity="3" />
+  </my-node>
+</my-scene>

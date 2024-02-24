@@ -1,8 +1,12 @@
 Component({
-  behaviors: [require('../common/share-behavior').default],
+  //behaviors: [require('../common/share-behavior').default],
   data: {
     loaded: false,
     arReady: false,
+  },
+  properties:{
+    width:Number,
+    height:Number,
   },
   methods: {
     handleReady({detail}) {

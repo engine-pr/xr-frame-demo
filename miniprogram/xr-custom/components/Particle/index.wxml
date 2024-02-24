@@ -1,27 +1,32 @@
-<xr-scene id="xr-scene" bind:ready="handleReady">
-    <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-        <xr-asset-load type="texture" asset-id="flarePicture" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/particles/flare.png" />
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
+    <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+        <my-asset-load type="texture" asset-id="flarePicture" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/particles/flare.png" />
 
-    </xr-assets>
+    </my-assets>
 
-    <xr-node>
-        <xr-mesh node-id="mesh-plane" position="0 -1 0" rotation="0 0 0" scale="5 0.2 5" geometry="cube" material="blue-mat" uniforms="u_baseColorFactor:0.48 0.78 0.64 1"></xr-mesh>
-        <xr-env sky-map="sky" is-sky2d />
+    <my-node>
+        <my-mesh node-id="mesh-plane" position="0 -1 0" rotation="0 0 0" scale="5 0.2 5" geometry="cube" material="blue-mat" uniforms="u_baseColorFactor:0.48 0.78 0.64 1"></my-mesh>
+        <my-env sky-map="sky" is-sky2d />
 
-        <xr-node node-id="camera-target" position="0 0 0"></xr-node>
+        <my-node node-id="camera-target" position="0 0 0"></my-node>
 
-        <xr-shadow id="paritcleSystemRoot" node-id="paritcleSystemRoot"></xr-shadow>
+        <my-shadow id="paritcleSystemRoot" node-id="paritcleSystemRoot"></my-shadow>
 
-        <!-- <xr-particle  capacity="100" size="0.1" emit-rate="12" life-time="4" angle="0 360">
-    </xr-particle> -->
+        <!-- <my-particle  capacity="100" size="0.1" emit-rate="12" life-time="4" angle="0 360">
+    </my-particle> -->
 
 
-        <xr-camera id="camera" node-id="camera" position="0 6 -6" clear-color="0.1 0.1 0.1 1" target="mesh-plane" background="skybox" camera-orbit-control=""></xr-camera>
+        <my-camera id="camera" node-id="camera" position="0 6 -6" clear-color="0.1 0.1 0.1 1" target="mesh-plane" background="skybox" camera-orbit-control=""></my-camera>
 
-    </xr-node>
-    <xr-node node-id="lights">
-        <xr-light type="ambient" color="1 1 1" intensity="1.2" />
-        <xr-light type="directional" rotation="90 0 0" color="1 1 1" intensity="2.5" />
-    </xr-node>
+    </my-node>
+    <my-node node-id="lights">
+        <my-light type="ambient" color="1 1 1" intensity="1.2" />
+        <my-light type="directional" rotation="90 0 0" color="1 1 1" intensity="2.5" />
+    </my-node>
 
-</xr-scene>
+</my-scene>

@@ -1,19 +1,24 @@
-<xr-scene id="xr-scene" bind:ready="handleReady">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <xr-asset-load type="gltf" asset-id="home" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/pokemon_loreleis_arena/index.glb" />
-    <xr-asset-load type="gltf" asset-id="baibianguai" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/baibianguai/index.glb" />
-  </xr-assets>
-  <xr-node>
-    <xr-node node-id="target" position="0 1 0" />
-    <xr-gltf position="0 2.4 0" scale="0.03 0.03 0.03" model="baibianguai" cast-shadow anim-autoplay></xr-gltf>
-    <xr-gltf position="0 0 0" scale="100 100 100" model="home" receive-shadow anim-autoplay></xr-gltf>
-    <xr-camera
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <my-asset-load type="gltf" asset-id="home" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/pokemon_loreleis_arena/index.glb" />
+    <my-asset-load type="gltf" asset-id="baibianguai" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/baibianguai/index.glb" />
+  </my-assets>
+  <my-node>
+    <my-node node-id="target" position="0 1 0" />
+    <my-gltf position="0 2.4 0" scale="0.03 0.03 0.03" model="baibianguai" cast-shadow anim-autoplay></my-gltf>
+    <my-gltf position="0 0 0" scale="100 100 100" model="home" receive-shadow anim-autoplay></my-gltf>
+    <my-camera
       id="camera" node-id="camera" position="0 4 6" clear-color="0.925 0.925 0.925 1"
       target="target" background="default" camera-orbit-control=""
-    ></xr-camera>
-  </xr-node>
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="1" />
-    <xr-light type="directional" rotation="40 180 0" color="1 1 1" intensity="2" cast-shadow />
-  </xr-node>
-</xr-scene>
+    ></my-camera>
+  </my-node>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="1" />
+    <my-light type="directional" rotation="40 180 0" color="1 1 1" intensity="2" cast-shadow />
+  </my-node>
+</my-scene>

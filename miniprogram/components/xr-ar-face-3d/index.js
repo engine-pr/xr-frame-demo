@@ -1,5 +1,5 @@
 Component({
-  behaviors: [require('../common/share-behavior').default],
+ // behaviors: [require('../common/share-behavior').default],
   data: {
     loaded: false,
     arReady: false,
@@ -8,6 +8,10 @@ Component({
     syncStr: '',
     syncList: [],
     syncBoxSize: 0.03
+  },
+  properties:{
+    width:Number,
+    height:Number,
   },
   infoInited: false,
   methods: {

@@ -1,24 +1,29 @@
-<xr-scene id="xr-scene" bind:ready="handleReady">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <xr-asset-material asset-id="plane-shadow-mat" effect="plane-shadow" />
-  </xr-assets>
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <my-asset-material asset-id="plane-shadow-mat" effect="plane-shadow" />
+  </my-assets>
 
-  <xr-mesh position="0 0 0" scale="10 1 10" geometry="plane" material="plane-shadow-mat" receive-shadow></xr-mesh>
+  <my-mesh position="0 0 0" scale="10 1 10" geometry="plane" material="plane-shadow-mat" receive-shadow></my-mesh>
 
-  <xr-env env-data="xr-frame-team-workspace-day2" />
-  <xr-node>
-    <xr-node cast-shadow id="preview-model-videoData">
-      <xr-node cast-shadow id="preview-model-sub-videoData" scale="1 1 1">
-        <xr-shadow cast-shadow id="geometryRoot-videoData" node-id="geometryRoot-videoData"></xr-shadow>
-      </xr-node>
-    </xr-node>
+  <my-env env-data="xr-frame-team-workspace-day2" />
+  <my-node>
+    <my-node cast-shadow id="preview-model-videoData">
+      <my-node cast-shadow id="preview-model-sub-videoData" scale="1 1 1">
+        <my-shadow cast-shadow id="geometryRoot-videoData" node-id="geometryRoot-videoData"></my-shadow>
+      </my-node>
+    </my-node>
 
-    <xr-node node-id="camera-target" position="0 0 0"></xr-node>
+    <my-node node-id="camera-target" position="0 0 0"></my-node>
 
-    <xr-camera id="camera" node-id="camera" position="2 3 -5" clear-color="0.96 0.96 0.96 1" target="camera-target" near="0.1" far="2000" camera-orbit-control="" background="skybox"></xr-camera>
-  </xr-node>
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="1.2" />
-    <xr-light type="directional" rotation="40 0 0" color="1 1 1" intensity="3" cast-shadow />
-  </xr-node>
-</xr-scene>
+    <my-camera id="camera" node-id="camera" position="2 3 -5" clear-color="0.96 0.96 0.96 1" target="camera-target" near="0.1" far="2000" camera-orbit-control="" background="skybox"></my-camera>
+  </my-node>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="1.2" />
+    <my-light type="directional" rotation="40 0 0" color="1 1 1" intensity="3" cast-shadow />
+  </my-node>
+</my-scene>

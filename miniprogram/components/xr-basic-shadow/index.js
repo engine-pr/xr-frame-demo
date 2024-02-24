@@ -1,8 +1,10 @@
 Component({
-  behaviors: [require('../common/share-behavior').default],
+  //behaviors: [require('../common/share-behavior').default],
   shadowRoot: null,
   gltfModle: null,
   properties: {
+    width:Number,
+    height:Number,
     meshCount: {
       type: Number,
       value: 0,

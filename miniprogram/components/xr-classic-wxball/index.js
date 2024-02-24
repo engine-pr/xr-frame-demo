@@ -1,10 +1,12 @@
 Component({
-  behaviors: [require('../common/share-behavior').default],
+ // behaviors: [require('../common/share-behavior').default],
   wxball: null,
   wxballTransform: null,
   wxballAnimator: null,
   animationRuning: false,
   properties: {
+    width:Number,
+    height:Number,
   },
   data: {
     loaded: false,

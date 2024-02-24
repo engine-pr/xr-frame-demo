@@ -1,33 +1,38 @@
-<xr-scene ar-system="modes:Body" bind:ready="handleReady" bind:ar-ready="handleARReady">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-  </xr-assets>
-  <xr-node wx:if="{{arReady}}">
-    <xr-ar-tracker id='tracker' mode="Body" auto-sync="-1 0 5 6 17 18 11 12 13 14 15 16">
-      <xr-mesh name="body" geometry="cube" scale="0.6 1.7 0.1" uniforms="u_baseColorFactor:1 1 1 0.5" states="renderQueue:2500,alphaMode:BLEND"/>
-      <xr-mesh name="head" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:1 0 0 1" />
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" ar-system="modes:Body" bind:ready="handleReady" bind:ar-ready="handleARReady">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+  </my-assets>
+  <my-node wx:if="{{arReady}}">
+    <my-ar-tracker id='tracker' mode="Body" auto-sync="-1 0 5 6 17 18 11 12 13 14 15 16">
+      <my-mesh name="body" geometry="cube" scale="0.6 1.7 0.1" uniforms="u_baseColorFactor:1 1 1 0.5" states="renderQueue:2500,alphaMode:BLEND"/>
+      <my-mesh name="head" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:1 0 0 1" />
 
-      <xr-mesh name="shoulderL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
-      <xr-mesh name="shoulderR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="shoulderL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="shoulderR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
 
-      <xr-mesh name="HandL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
-      <xr-mesh name="HandR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="HandL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
+      <my-mesh name="HandR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 0 1 1" />
 
-      <xr-mesh name="crotchL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
-      <xr-mesh name="crotchR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
+      <my-mesh name="crotchL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
+      <my-mesh name="crotchR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
 
-      <xr-mesh name="kneeL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
-      <xr-mesh name="kneeR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
+      <my-mesh name="kneeL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
+      <my-mesh name="kneeR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
 
-      <xr-mesh name="footL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
-      <xr-mesh name="footR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
-    </xr-ar-tracker>
-    <xr-camera
+      <my-mesh name="footL" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
+      <my-mesh name="footR" geometry="sphere" scale="0.05 0.05 0.05" uniforms="u_baseColorFactor:0 1 0 1" />
+    </my-ar-tracker>
+    <my-camera
       id="camera" node-id="camera" clear-color="0.925 0.925 0.925 1"
       background="ar" is-ar-camera near="0.01"
-    ></xr-camera>
-  </xr-node>
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="1" />
-    <xr-light type="directional" rotation="180 0 0" color="1 1 1" intensity="3" />
-  </xr-node>
-</xr-scene>
+    ></my-camera>
+  </my-node>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="1" />
+    <my-light type="directional" rotation="180 0 0" color="1 1 1" intensity="3" />
+  </my-node>
+</my-scene>

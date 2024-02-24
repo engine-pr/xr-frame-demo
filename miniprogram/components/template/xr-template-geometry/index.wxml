@@ -1,21 +1,26 @@
-<xr-scene id="xr-scene" bind:ready="handleReady">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-      <xr-asset-material asset-id="simple-mat" effect="simple" />
-  </xr-assets>
-  <xr-node>
-    <xr-node node-id="camera-target" position="0 0 0"></xr-node>
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+      <my-asset-material asset-id="simple-mat" effect="simple" />
+  </my-assets>
+  <my-node>
+    <my-node node-id="camera-target" position="0 0 0"></my-node>
 
-    <xr-shadow id="geometryRoot" node-id="geometryRoot"></xr-shadow>
+    <my-shadow id="geometryRoot" node-id="geometryRoot"></my-shadow>
 
 
-    <xr-camera
+    <my-camera
       id="camera" node-id="camera" position="2 2 4" clear-color="0.4 0.4 0.4 1"
       target="camera-target" near="0.1" far="2000"
       camera-orbit-control=""
-    ></xr-camera>
-  </xr-node>
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="1.2" />
-    <xr-light type="directional" rotation="120 20 0" color="1 1 1" intensity="2" />
-  </xr-node>
-</xr-scene>
+    ></my-camera>
+  </my-node>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="1.2" />
+    <my-light type="directional" rotation="120 20 0" color="1 1 1" intensity="2" />
+  </my-node>
+</my-scene>

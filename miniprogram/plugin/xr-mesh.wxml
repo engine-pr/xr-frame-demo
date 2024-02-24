@@ -1,0 +1,3 @@
+<text style="visibility:hidden;" bindonekit_add="onekit_add">
+<slot></slot>
+</text>

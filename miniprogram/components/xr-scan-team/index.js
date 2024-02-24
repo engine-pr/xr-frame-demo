@@ -1,8 +1,10 @@
 import XrTeamCameraAnimation from '../../xr-custom/animations/XrTeamCameraAnimation';
 
 Component({
-  behaviors: [require('../common/share-behavior').default],
+    //behaviors: [require('../common/share-behavior').default],
   properties: {
+    width:Number,
+    height:Number,
     loaded: false,
     run: {
       type: Boolean,

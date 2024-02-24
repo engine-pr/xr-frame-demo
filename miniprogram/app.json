@@ -90,7 +90,24 @@
     "pages/customParticle/scene-customParticle-shapeEmitter/index",
     "pages/customParticle/scene-customParticle-meshEmitter/index"
   ],
-  "usingComponents": {},
+  "usingComponents": {
+    "my-ar-tracker":"/plugin/my-ar-tracker",
+    "my-asset-load":"/plugin/my-asset-load",
+    "my-asset-material":"/plugin/my-asset-material",
+    "my-asset-post-process":"/plugin/my-asset-post-process",
+    "my-asset-render-texture":"/plugin/my-asset-render-texture",
+    "my-assets":"/plugin/my-assets",
+    "my-camera":"/plugin/my-camera",
+    "my-env":"/plugin/my-env",
+    "my-gltf":"/plugin/my-gltf",
+    "my-light":"/plugin/my-light",
+    "my-mesh":"/plugin/my-mesh",
+    "my-node":"/plugin/my-node",
+    "my-particle":"/plugin/my-particle",
+    "my-scene":"/plugin/my-scene",
+    "my-shadow":"/plugin/my-shadow",
+    "my-text":"/plugin/my-text"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f6f6f6",

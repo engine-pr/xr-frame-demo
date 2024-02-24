@@ -1,21 +1,26 @@
-<xr-scene ar-system="modes:Face;camera:Front;pose3d:true;" bind:ready="handleReady" bind:ar-ready="handleARReady">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <xr-asset-load type="gltf" asset-id="gltf-face" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/face.glb" />
-    <xr-asset-load type="gltf" asset-id="gltf-glass" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/glasses.glb" />
-  </xr-assets>
-  <xr-env env-data="xr-frame-team-workspace-day" />
-  <xr-node>
-    <xr-ar-tracker id='tracker' mode="Face">
-      <xr-gltf id="face" node-id="gltf-face" visible="{{loaded}}" position="0 0 0" rotation="0 0 0" scale="1 1 1" model="gltf-face" never-cull></xr-gltf>
-      <xr-gltf node-id="gltf-glass" visible="{{loaded}}" position="0 0 0" rotation="0 0 0" scale="1 1 1" model="gltf-glass"></xr-gltf>
-    </xr-ar-tracker>
-    <xr-camera
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" ar-system="modes:Face;camera:Front;pose3d:true;" bind:ready="handleReady" bind:ar-ready="handleARReady">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <my-asset-load type="gltf" asset-id="gltf-face" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/face.glb" />
+    <my-asset-load type="gltf" asset-id="gltf-glass" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/glasses.glb" />
+  </my-assets>
+  <my-env env-data="xr-frame-team-workspace-day" />
+  <my-node>
+    <my-ar-tracker id='tracker' mode="Face">
+      <my-gltf id="face" node-id="gltf-face" visible="{{loaded}}" position="0 0 0" rotation="0 0 0" scale="1 1 1" model="gltf-face" never-cull></my-gltf>
+      <my-gltf node-id="gltf-glass" visible="{{loaded}}" position="0 0 0" rotation="0 0 0" scale="1 1 1" model="gltf-glass"></my-gltf>
+    </my-ar-tracker>
+    <my-camera
       id="camera" node-id="camera" clear-color="0.925 0.925 0.925 1"
       background="ar" is-ar-camera near="0.01"
-    ></xr-camera>
-  </xr-node>
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="0.2" />
-    <xr-light type="directional" rotation="180 0 0" color="1 1 1" intensity="1" />
-  </xr-node>
-</xr-scene>
+    ></my-camera>
+  </my-node>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="0.2" />
+    <my-light type="directional" rotation="180 0 0" color="1 1 1" intensity="1" />
+  </my-node>
+</my-scene>

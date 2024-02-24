@@ -1,7 +1,11 @@
 Component({
-  behaviors: [require('../common/share-behavior').default],
+ // behaviors: [require('../common/share-behavior').default],
   data: {
     loaded: false
+  },
+  properties:{
+    width:Number,
+    height:Number,
   },
   lifetimes: {},
   methods: {

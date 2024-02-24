@@ -1,41 +1,46 @@
-<xr-scene ar-system="modes:Plane" id="xr-scene" bind:ready="handleReady" bind:tick="handleTick">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <xr-asset-load type="gltf" asset-id="anchor" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ar-plane-marker.glb" /> 
-    <xr-asset-load type="gltf" asset-id="gltf-model" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ship_in_clouds/scene.gltf" />
-    <xr-asset-material asset-id="mat" effect="simple" />
-  </xr-assets>
-  <xr-node wx:if="{{loaded}}">
-    <xr-ar-tracker mode="Plane">
-      <xr-gltf id="anchor" model="anchor" />
-    </xr-ar-tracker>
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" ar-system="modes:Plane" id="xr-scene" bind:ready="handleReady" bind:tick="handleTick">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <my-asset-load type="gltf" asset-id="anchor" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ar-plane-marker.glb" /> 
+    <my-asset-load type="gltf" asset-id="gltf-model" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ship_in_clouds/scene.gltf" />
+    <my-asset-material asset-id="mat" effect="simple" />
+  </my-assets>
+  <my-node wx:if="{{loaded}}">
+    <my-ar-tracker mode="Plane">
+      <my-gltf id="anchor" model="anchor" />
+    </my-ar-tracker>
 
-    <xr-node id="setitem" node-id="setitem" visible="false">
-      <xr-gltf
+    <my-node id="setitem" node-id="setitem" visible="false">
+      <my-gltf
         id="scene-mesh" model="gltf-model"
         position="0 2 8" rotation="0 0 0" scale="5 5 5"
         states="stencilComp: 3, stencilRef: 1, stencilReadMask: 1"
       />
 
-      <xr-node id="door" position="0 1 0">
-        <xr-mesh
+      <my-node id="door" position="0 1 0">
+        <my-mesh
           id="door-mesh" rotation="90 0 0" scale="0.8 1 1.6"
           geometry="plane" material="mat"
           states="renderQueue: 1, stencilComp: 7, stencilRef: 1, stencilReadMask: 1, stencilWriteMask: 1, stencilPass: 1, stencilFail: 2, stencilZFail: 2"
         />
-      </xr-node>
-    </xr-node>
-  </xr-node>
+      </my-node>
+    </my-node>
+  </my-node>
 
-  <xr-camera
+  <my-camera
     id="main-camera" near="0.1" far="2000"
     background="ar" is-ar-camera clear-color="1 0 0 1"
   />
-  <xr-camera
+  <my-camera
     id="magic-camera" background="default" cull-mask="0"
     is-clear-color="false" is-clear-stencil="false" is-clear-depth="false"
   />
 
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="0.6" />
-  </xr-node>
-</xr-scene>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="0.6" />
+  </my-node>
+</my-scene>

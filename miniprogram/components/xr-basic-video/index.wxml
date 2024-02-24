@@ -1,32 +1,37 @@
-<xr-scene id="xr-scene" bind:ready="handleReady">
-  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <xr-asset-load
+<my-scene 
+disable-scroll
+    id="main-frame"
+    width="{{width}}"
+    height="{{height}}"
+    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
+  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <my-asset-load
       type="video-texture" asset-id="cat"
       src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/videos/cat.mp4" options="autoPlay:true,loop:true,abortAudio:false,placeHolder:https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/videos/cat.jpg"
     />
-    <xr-asset-load
+    <my-asset-load
       type="video-texture" asset-id="skybox"
       src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/videos/office-skybox.mp4" options="autoPlay:true,loop:true,placeHolder:https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/videos/office-skybox.jpg"
     />
-    <xr-asset-material asset-id="standard-mat" effect="standard" />
-  </xr-assets>
-  <xr-env sky-map="video-skybox" />
-  <xr-node>
-    <xr-node node-id="target" />
-    <xr-mesh
+    <my-asset-material asset-id="standard-mat" effect="standard" />
+  </my-assets>
+  <my-env sky-map="video-skybox" />
+  <my-node>
+    <my-node node-id="target" />
+    <my-mesh
       node-id="mesh-cube" scale="1.6 0.9 0.9"
       geometry="cube" material="standard-mat"
       uniforms="u_baseColorMap:video-cat"
       cube-shape="autoFit:true"
       bind:touch-shape="handleTouchCube"
     />
-    <xr-camera
+    <my-camera
       id="camera" node-id="camera" position="0 0 3" clear-color="0.925 0.925 0.925 1"
       target="target" background="skybox" camera-orbit-control=""
-    ></xr-camera>
-  </xr-node>
-  <xr-node node-id="lights">
-    <xr-light type="ambient" color="1 1 1" intensity="1" />
-    <xr-light type="directional" rotation="40 0 0" color="1 1 1" intensity="3"/>
-  </xr-node>
-</xr-scene>
+    ></my-camera>
+  </my-node>
+  <my-node node-id="lights">
+    <my-light type="ambient" color="1 1 1" intensity="1" />
+    <my-light type="directional" rotation="40 0 0" color="1 1 1" intensity="3"/>
+  </my-node>
+</my-scene>

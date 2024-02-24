@@ -1,6 +1,8 @@
 Component({
-  behaviors: [require('../common/share-behavior').default],
+    //behaviors: [require('../common/share-behavior').default],
   properties: {
+    width:Number,
+    height:Number,
     visibleIndex: {
       type: Number,
       value: 1,
