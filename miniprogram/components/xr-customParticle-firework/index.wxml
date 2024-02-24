@@ -15,8 +15,8 @@ disable-scroll
     ></my-mesh>
     <my-env sky-map="sky" is-sky2d/>
 
-    <my-custom-particle id="firework" position="0 0 0" start-color="1 1 1 1" end-color="1 0 0 1" capacity="1" speed="1" size="0.5" emit-rate="1" life-time="3" angle="0"  texture="particle-texture">
-    </my-custom-particle>
+    <xr-custom-particle id="firework" position="0 0 0" start-color="1 1 1 1" end-color="1 0 0 1" capacity="1" speed="1" size="0.5" emit-rate="1" life-time="3" angle="0"  texture="particle-texture">
+    </xr-custom-particle>
 
     <my-camera
       id="camera" node-id="camera" position="0 6 -6" clear-color="0.1 0.1 0.1 1"

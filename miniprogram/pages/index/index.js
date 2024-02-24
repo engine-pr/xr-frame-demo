@@ -39,7 +39,7 @@ Page({
    //url:'/pages/basic/scene-basic-shadow/index'
   // url:'/pages/basic/scene-basic-visible-layer/index'
   //url:'/pages/basic/scene-basic-envData/index'
-  //url:'/pages/gltf/scene-gltf-animation/index'
+  //url:'/pages/custom/scene-custom-logic/index'
   //})
   },
   onShareAppMessage() {

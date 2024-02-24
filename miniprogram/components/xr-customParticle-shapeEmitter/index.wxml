@@ -14,8 +14,8 @@ disable-scroll
     ></my-mesh>
     <my-env sky-map="sky" is-sky2d/>
 
-    <my-custom-particle  position="0 0 2" start-color="0 1 0 1" end-color="1 1 0 1" capacity="100" speed="-5" size="0.1 0.2" emit-rate="80" life-time="0.2 0.4" angle="0 360" angular-speed="-300" emitter-type="SphereShape" emitter-props="radius:1.5" texture="particle-texture">
-    </my-custom-particle>
+    <xr-custom-particle  position="0 0 2" start-color="0 1 0 1" end-color="1 1 0 1" capacity="100" speed="-5" size="0.1 0.2" emit-rate="80" life-time="0.2 0.4" angle="0 360" angular-speed="-300" emitter-type="SphereShape" emitter-props="radius:1.5" texture="particle-texture">
+    </xr-custom-particle>
 
     <my-camera
       id="camera" node-id="camera" position="0 6 -6" clear-color="0.1 0.1 0.1 1"

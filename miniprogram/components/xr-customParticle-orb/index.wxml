@@ -16,11 +16,11 @@ disable-scroll
     <my-env sky-map="sky" is-sky2d/>
 
 
-    <my-custom-particle id="orb" position="0 0 2" rotation="0 0 0" capacity="1000" speed="0" size="5" emit-rate="18" life-time="0.2" angle="0"  texture="orb">
-    </my-custom-particle>
+    <xr-custom-particle id="orb" position="0 0 2" rotation="0 0 0" capacity="1000" speed="0" size="5" emit-rate="18" life-time="0.2" angle="0"  texture="orb">
+    </xr-custom-particle>
 
-    <my-custom-particle id="orbLine" position="0 0 2" rotation="0 0 0" angle="90" capacity="1000" speed="-4 -2" size="0.4 0.7" emit-rate="70" life-time="0.2 0.4" texture="magic-line" emitter-type="SphereShape" emitter-props="radius:0.7" render-mode="stretched">
-    </my-custom-particle>
+    <xr-custom-particle id="orbLine" position="0 0 2" rotation="0 0 0" angle="90" capacity="1000" speed="-4 -2" size="0.4 0.7" emit-rate="70" life-time="0.2 0.4" texture="magic-line" emitter-type="SphereShape" emitter-props="radius:0.7" render-mode="stretched">
+    </xr-custom-particle>
 
     <my-camera
       id="camera" node-id="camera" position="0 6 -6" clear-color="0.1 0.1 0.1 1"

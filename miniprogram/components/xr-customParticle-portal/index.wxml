@@ -14,7 +14,7 @@ disable-scroll
     ></my-mesh>
     <my-env sky-map="sky" is-sky2d/>
     
-    <my-custom-particle  id="portal" position="0 0 2" atlas="portal-atlas" capacity="1000" speed="0" size="2 2.5" emit-rate="12" life-time="0.4" angle="0 360" atlas-speed="0" atlas-random="true" emitter-type="SphereShape" emitter-props="radius:0.03" angular-speed="-300"></my-custom-particle>
+    <xr-custom-particle  id="portal" position="0 0 2" atlas="portal-atlas" capacity="1000" speed="0" size="2 2.5" emit-rate="12" life-time="0.4" angle="0 360" atlas-speed="0" atlas-random="true" emitter-type="SphereShape" emitter-props="radius:0.03" angular-speed="-300"></xr-custom-particle>
 
     <my-camera
       id="camera" node-id="camera" position="0 6 -6" clear-color="0.1 0.1 0.1 1"
