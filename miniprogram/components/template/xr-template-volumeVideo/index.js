@@ -6,7 +6,6 @@ const ROOTURL = 'https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqclou
 const DIRROOT = '/xr-frame/demo/'
 
 Component({
-  behaviors: [require('../../common/share-behavior').default],
   properties: {
     markerImg: {
       type: String

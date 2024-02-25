@@ -26,7 +26,6 @@ let quaternionCRes;  //camera每次需要转动到的角度
 let initFinish = false;
 
 Component({
-  behaviors: [require('../../common/share-behavior').default],
   properties: {
     width:Number,
     height:Number,

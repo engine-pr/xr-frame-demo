@@ -1,5 +1,4 @@
 Component({
-  behaviors: [require('../../common/share-behavior').default],
   data: {
     loaded: false,
     arReady: false,

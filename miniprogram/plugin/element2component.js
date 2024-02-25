@@ -35,7 +35,7 @@ export default function element2component(xrFrameSystem2, elementClass) {
     const value = dataView.create(v, schema.defaultValue, scene)
     switch (k) {
       default:
-        console.error("[2]", element._type, k, dataType, value)
+        //console.error("[2]", element._type, k, dataType, value)
         component.setDataOne(k, value)
         break
     }

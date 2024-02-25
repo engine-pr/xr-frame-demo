@@ -1,6 +1,5 @@
 var touch = false;
 Component({
-  behaviors: [require('../../common/share-behavior').default],
   properties: {
     itemIndex: {
       type: Number,
