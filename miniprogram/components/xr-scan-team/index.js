@@ -74,7 +74,7 @@ Component({
 
       const inited = this.camera && this.hikari && this.roam && this.xinyi;
 
-     // console.error("??????????????????????",this.hikari , this.roam,this.xinyi)
+      //console.error("??????????????????????",this.hikari , this.roam,this.xinyi)
       if (inited && !this.cameraAnim) {
         this.cameraAnim = this.camera.el.addComponent(wx.getXrFrameSystem().Animator);
         this.cameraAnim.createAnimation(XrTeamCameraAnimation, {

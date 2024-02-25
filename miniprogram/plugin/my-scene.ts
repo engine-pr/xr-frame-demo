@@ -23,14 +23,15 @@ Component({
       const page = core.Page.current
       const scene = detail.value;
       page.onekit_scene = scene
-      page.onekit_elements = {}
+      page.onekit_uis = {}
       page.onekit_assets = {}
+      page.onekit_users = {}
       this.onekit_count0 = 0
       this.onekit_count = 0
       this._element = scene.getElementById('onekit-root');
       scene.getElementById = function (id) {
-        const element = page.onekit_elements[id]
-        return element
+        const ui = page.onekit_uis[id]
+        return ui._element
       }
       ////////////////////////////////////////
       const timer = setInterval(() => {
@@ -43,7 +44,7 @@ Component({
         }
         clearInterval(timer)       
         this.done = true 
-        console.error("============= ready",page.onekit_elements)
+        console.error("============= ready")
         this.triggerEvent("ready", {
           value: scene
         })
