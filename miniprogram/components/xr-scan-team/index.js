@@ -46,7 +46,6 @@ Component({
       if (!this.init()) {
         return;
       }
-      
       if (this.requireRun) {
         this.requireRun = false;
         this.run();
@@ -75,6 +74,7 @@ Component({
 
       const inited = this.camera && this.hikari && this.roam && this.xinyi;
 
+     // console.error("??????????????????????",this.hikari , this.roam,this.xinyi)
       if (inited && !this.cameraAnim) {
         this.cameraAnim = this.camera.el.addComponent(wx.getXrFrameSystem().Animator);
         this.cameraAnim.createAnimation(XrTeamCameraAnimation, {
@@ -96,6 +96,7 @@ Component({
       this[target.id] = target.getComponent(wx.getXrFrameSystem().Transform);
     },
     run: async function() {
+      console.error("xxxxxx")
       this.cameraCtrl.disable();
 
       await this.prepareRun('xinyi');

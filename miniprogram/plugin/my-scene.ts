@@ -43,7 +43,7 @@ Component({
         }
         clearInterval(timer)       
         this.done = true 
-        console.warn("============= done",page.onekit_elements)
+        console.error("============= ready",page.onekit_elements)
         this.triggerEvent("ready", {
           value: scene
         })
