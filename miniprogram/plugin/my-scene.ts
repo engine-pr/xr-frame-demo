@@ -25,8 +25,8 @@ Component({
       page.onekit_scene = scene
       page.onekit_elements = {}
       page.onekit_assets = {}
-      this.onekit_count = 0
       this.onekit_count0 = 0
+      this.onekit_count = 0
       this._element = scene.getElementById('onekit-root');
       scene.getElementById = function (id) {
        // console.error(  page.onekit_elements)
