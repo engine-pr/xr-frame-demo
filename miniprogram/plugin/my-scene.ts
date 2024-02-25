@@ -29,7 +29,6 @@ Component({
       this.onekit_count = 0
       this._element = scene.getElementById('onekit-root');
       scene.getElementById = function (id) {
-       // console.error(  page.onekit_elements)
         const element = page.onekit_elements[id]
         return element
       }
@@ -42,15 +41,20 @@ Component({
         if (this.onekit_count == 0) {
           return
         }
-        clearInterval(timer)
+        clearInterval(timer)       
+        this.done = true 
+        console.warn("============= done",page.onekit_elements)
         this.triggerEvent("ready", {
           value: scene
         })
       }, 2000)
 
     },
-    onekit_handleTick: function () {
-
+    onekit_handleTick: function ({detail}) {
+      if(!this.done){
+        return
+      }
+      this.triggerEvent("tick",detail)
     }
   }
 })

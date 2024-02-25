@@ -19,6 +19,8 @@ Page({
     this.setData({positions: info});
   },
   handleRun: function() {
+    
+    console.error(this.data.loaded,!this.data.run)
     if (this.data.loaded && !this.data.run) {
       this.setData({run: true});
     }
