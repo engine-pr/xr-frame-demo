@@ -31,8 +31,8 @@ export default function element2component(xrFrameSystem2, elementClass) {
     const caml_k = core.String.toHump(k)
     const schema = component.schema[caml_k]
     const dataType = core.String.fromHump(schema.type)
-    const dataView = xrFrameSystem2.getRegisterDataValue(dataType)
-    const value = dataView.create(v, schema.defaultValue, scene)
+    const dataValue = xrFrameSystem2.getRegisterDataValue(dataType)
+    const value = dataValue.create(v, schema.defaultValue, scene)
     switch (k) {
       default:
         //console.error("[2]", element._type, k, dataType, value)

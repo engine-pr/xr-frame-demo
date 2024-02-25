@@ -49,14 +49,20 @@ module.exports = Behavior({
             const {
               type,
               assetId,
-              src
+              src,
+              options
             } = this.properties
             page.onekit_assets[assetId] = null
-            scene.assets.loadAsset({
+            const args = {
               type,
               assetId,
               src
-            }).then(data => {
+            }
+            if(options){
+              const dataValue = xrFrameSystem2.getRegisterDataValue("dict")
+              args.options = dataValue.create(options, {}, scene)
+            }
+            scene.assets.loadAsset(args).then(data => {
               const {
                 type,
                 assetId
@@ -96,8 +102,8 @@ module.exports = Behavior({
               data,
               assetId
             } = this.properties
-            const dataView = xrFrameSystem2.getRegisterDataValue("dict")
-            const dict = data ? dataView.create(data, "", scene) : {}
+            const dataValue = xrFrameSystem2.getRegisterDataValue("dict")
+            const dict = data ? dataValue.create(data, "", scene) : {}
             const pp = scene.createPostProcess({
               type,
               isHDR: isHdr,
