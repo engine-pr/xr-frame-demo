@@ -12,7 +12,7 @@ const options = {
         }
         clearInterval(timer)
         this.triggerEvent("loaded",{assets:page.onekit_assets})
-      },1000)
+      },2000)
     }
   }
 }

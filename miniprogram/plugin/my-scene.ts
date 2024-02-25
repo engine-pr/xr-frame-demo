@@ -13,7 +13,7 @@ Component({
       type: String,
       value: "scene"
     },
-    renderSystem:String
+    renderSystem:{type:String,value:"alpha:true"}
   },
   data: {
     loaded: false
@@ -46,7 +46,7 @@ Component({
         this.triggerEvent("ready", {
           value: scene
         })
-      }, 1000)
+      }, 2000)
 
     },
     onekit_handleTick: function () {
