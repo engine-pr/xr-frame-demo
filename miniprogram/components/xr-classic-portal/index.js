@@ -1,8 +1,6 @@
 Component({
-    //behaviors: [require('../common/share-behavior').default],
+  behaviors: [require('../common/share-behavior').default],
   properties: {
-    width:Number,
-    height:Number,
   },
   data: {
     loaded: false,
@@ -16,6 +14,134 @@ Component({
   methods: {
     handleReady({detail}) {
       const xrScene = this.scene = detail.value;
+      const xrFrameSystem = wx.getXrFrameSystem();
+      const shadow = this.scene.getElementById('shadow');
+			{
+				const shadow_0 = this.scene.createElement(xrFrameSystem.XRAssets,{
+				});
+				shadow_0.event.add('progress',(e)=>{
+					this.handleAssetsProgress({detail:{value:e}});
+				});
+				shadow_0.event.add('loaded',(e)=>{
+					this.handleAssetsLoaded({detail:{value:e}});
+				});
+				shadow.addChild(shadow_0);
+				{
+					const shadow_0_0 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`anchor`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ar-plane-marker.glb`,
+					});
+					shadow_0.addChild(shadow_0_0);
+				}
+				{
+					const shadow_0_1 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`gltf-model`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ship_in_clouds/scene.gltf`,
+					});
+					shadow_0.addChild(shadow_0_1);
+				}
+				{
+					const shadow_0_2 = this.scene.createElement(xrFrameSystem.XRMaterial,{
+						'asset-id':`mat`,
+						'effect':`simple`,
+					});
+					shadow_0.addChild(shadow_0_2);
+				}
+			}
+			{
+				const shadow_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+					'wx:if':`${this.data.loaded}`,
+				});
+				shadow.addChild(shadow_1);
+				{
+					const shadow_1_0 = this.scene.createElement(xrFrameSystem.XRArTracker,{
+						'mode':`Plane`,
+					});
+					shadow_1.addChild(shadow_1_0);
+					{
+						const shadow_1_0_0 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+							'id':`anchor`,
+							'model':`anchor`,
+						});
+						shadow_1_0.addChild(shadow_1_0_0);
+					}
+				}
+				{
+					const shadow_1_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+						'id':`setitem`,
+						'node-id':`setitem`,
+						'visible':`false`,
+					});
+					shadow_1.addChild(shadow_1_1);
+					{
+						const shadow_1_1_0 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+							'id':`scene-mesh`,
+							'model':`gltf-model`,
+							'position':`0 2 8`,
+							'rotation':`0 0 0`,
+							'scale':`5 5 5`,
+							'states':`stencilComp: 3, stencilRef: 1, stencilReadMask: 1`,
+						});
+						shadow_1_1.addChild(shadow_1_1_0);
+					}
+					{
+						const shadow_1_1_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+							'id':`door`,
+							'position':`0 1 0`,
+						});
+						shadow_1_1.addChild(shadow_1_1_1);
+						{
+							const shadow_1_1_1_0 = this.scene.createElement(xrFrameSystem.XRMesh,{
+								'id':`door-mesh`,
+								'rotation':`90 0 0`,
+								'scale':`0.8 1 1.6`,
+								'geometry':`plane`,
+								'material':`mat`,
+								'states':`renderQueue: 1, stencilComp: 7, stencilRef: 1, stencilReadMask: 1, stencilWriteMask: 1, stencilPass: 1, stencilFail: 2, stencilZFail: 2`,
+							});
+							shadow_1_1_1.addChild(shadow_1_1_1_0);
+						}
+					}
+				}
+			}
+			{
+				const shadow_2 = this.scene.createElement(xrFrameSystem.XRCamera,{
+					'id':`main-camera`,
+					'near':`0.1`,
+					'far':`2000`,
+					'background':`ar`,
+					'is-ar-camera':``,
+					'clear-color':`1 0 0 1`,
+				});
+				shadow.addChild(shadow_2);
+			}
+			{
+				const shadow_3 = this.scene.createElement(xrFrameSystem.XRCamera,{
+					'id':`magic-camera`,
+					'background':`default`,
+					'cull-mask':`0`,
+					'is-clear-color':`false`,
+					'is-clear-stencil':`false`,
+					'is-clear-depth':`false`,
+				});
+				shadow.addChild(shadow_3);
+			}
+			{
+				const shadow_4 = this.scene.createElement(xrFrameSystem.XRNode,{
+					'node-id':`lights`,
+				});
+				shadow.addChild(shadow_4);
+				{
+					const shadow_4_0 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`ambient`,
+						'color':`1 1 1`,
+						'intensity':`0.6`,
+					});
+					shadow_4.addChild(shadow_4_0);
+				}
+			}
       this.inRealWorld = true;
       console.log('xr-scene', xrScene);
     },

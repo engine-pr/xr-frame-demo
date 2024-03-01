@@ -1,9 +1,7 @@
 
 Component({
-    //behaviors: [require('../common/share-behavior').default],
+  behaviors: [require('../common/share-behavior').default],
   properties: {
-    width:Number,
-    height:Number,
     capacity: {
       type: Number,
       value: 20
@@ -24,6 +22,98 @@ Component({
   methods: {
     handleReady({detail}) {
         const xrScene = this.scene = detail.value;
+      const xrFrameSystem = wx.getXrFrameSystem();
+      const shadow = this.scene.getElementById('shadow');
+			{
+				const shadow_0 = this.scene.createElement(xrFrameSystem.XRAssets,{
+				});
+				shadow.addChild(shadow_0);
+				{
+					const shadow_0_0 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`texture`,
+						'asset-id':`glow_circle`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/particles/glow_circle.png`,
+					});
+					shadow_0.addChild(shadow_0_0);
+				}
+			}
+			{
+				const shadow_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+				});
+				shadow.addChild(shadow_1);
+				{
+					const shadow_1_0 = this.scene.createElement(xrFrameSystem.XRMesh,{
+						'node-id':`mesh-plane`,
+						'position':`0 -1 0`,
+						'rotation':`0 0 0`,
+						'scale':`5 0.2 5`,
+						'geometry':`cube`,
+						'material':`blue-mat`,
+						'uniforms':`u_baseColorFactor:0.48 0.78 0.64 1`,
+					});
+					shadow_1.addChild(shadow_1_0);
+				}
+				{
+					const shadow_1_1 = this.scene.createElement(xrFrameSystem.XREnv,{
+						'sky-map':`sky`,
+						'is-sky2d':``,
+					});
+					shadow_1.addChild(shadow_1_1);
+				}
+				{
+					const shadow_1_2 = this.scene.createElement(xrFrameSystem.XRParticle,{
+						'id':`magicField`,
+						'position':`0 0 0`,
+						'rotation':`0 0 180`,
+						'capacity':`10`,
+						'speed':`0.1`,
+						'size':`2`,
+						'emit-rate':`6`,
+						'life-time':`0.5`,
+						'angle':`0`,
+						'render-mode':`mesh`,
+						'mesh':`specialCylinder`,
+						'texture':`glow_circle`,
+						'angular-speed':`0`,
+					});
+					shadow_1.addChild(shadow_1_2);
+				}
+				{
+					const shadow_1_3 = this.scene.createElement(xrFrameSystem.XRCamera,{
+						'id':`camera`,
+						'node-id':`camera`,
+						'position':`0 6 -6`,
+						'clear-color':`0.1 0.1 0.1 1`,
+						'target':`mesh-plane`,
+						'background':`skybox`,
+						'camera-orbit-control':``,
+					});
+					shadow_1.addChild(shadow_1_3);
+				}
+			}
+			{
+				const shadow_2 = this.scene.createElement(xrFrameSystem.XRNode,{
+					'node-id':`lights`,
+				});
+				shadow.addChild(shadow_2);
+				{
+					const shadow_2_0 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`ambient`,
+						'color':`1 1 1`,
+						'intensity':`0.3`,
+					});
+					shadow_2.addChild(shadow_2_0);
+				}
+				{
+					const shadow_2_1 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`directional`,
+						'rotation':`90 0 0`,
+						'color':`1 1 1`,
+						'intensity':`2.5`,
+					});
+					shadow_2.addChild(shadow_2_1);
+				}
+			}
         console.log('xr-scene', xrScene);
         const xrFrameSystem = wx.getXrFrameSystem()
         const magicField = xrScene.getElementById("magicField");

@@ -1,8 +1,6 @@
 Component({
-    //behaviors: [require('../common/share-behavior').default],
+  behaviors: [require('../common/share-behavior').default],
   properties: {
-    width:Number,
-    height:Number,
     a: Number,
   },
   data: {
@@ -13,6 +11,118 @@ Component({
   methods: {
     handleReady({detail}) {
       const xrScene = this.scene = detail.value;
+      const xrFrameSystem = wx.getXrFrameSystem();
+      const shadow = this.scene.getElementById('shadow');
+			{
+				const shadow_0 = this.scene.createElement(xrFrameSystem.XRAssets,{
+				});
+				shadow_0.event.add('progress',(e)=>{
+					this.handleAssetsProgress({detail:{value:e}});
+				});
+				shadow_0.event.add('loaded',(e)=>{
+					this.handleAssetsLoaded({detail:{value:e}});
+				});
+				shadow.addChild(shadow_0);
+				{
+					const shadow_0_0 = this.scene.createElement(xrFrameSystem.XRMaterial,{
+						'asset-id':`standard-mat`,
+						'effect':`standard`,
+					});
+					shadow_0.addChild(shadow_0_0);
+				}
+				{
+					const shadow_0_1 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`raw`,
+						'asset-id':`logo`,
+						'src':`/assets/wx_logo.bmp.bin`,
+					});
+					shadow_0.addChild(shadow_0_1);
+				}
+			}
+			{
+				const shadow_1 = this.scene.createElement(xrFrameSystem.XRPhysics,{
+				});
+				shadow.addChild(shadow_1);
+			}
+			{
+				const shadow_2 = this.scene.createElement(xrFrameSystem.XRNode,{
+				});
+				shadow.addChild(shadow_2);
+				{
+					const shadow_2_0 = this.scene.createElement(xrFrameSystem.XRArTracker,{
+						'id':`arTracker`,
+						'mode':`Marker`,
+						'src':`/components/xr-physics-shoot/weixin.png`,
+					});
+					shadow_2_0.event.add('ar-tracker-state',(e)=>{
+						this.handleARTrackerState({detail:{value:e}});
+					});
+					shadow_2.addChild(shadow_2_0);
+					{
+						const shadow_2_0_0 = this.scene.createElement(xrFrameSystem.XRNode,{
+						});
+						shadow_2_0.addChild(shadow_2_0_0);
+					}
+				}
+				{
+					const shadow_2_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+						'layer':`1`,
+					});
+					shadow_2.addChild(shadow_2_1);
+					{
+						const shadow_2_1_0 = this.scene.createElement(xrFrameSystem.XRShadow,{
+							'id':`bricksRoot`,
+							'node-id':`bricksRoot`,
+						});
+						shadow_2_1.addChild(shadow_2_1_0);
+					}
+				}
+				{
+					const shadow_2_2 = this.scene.createElement(xrFrameSystem.XRCamera,{
+						'id':`camera2`,
+						'node-id':`camera2`,
+						'clear-color':`0.925 0.925 0.925 1`,
+						'position':`0 0 5`,
+						'background':`ar`,
+						'is-ar-camera':``,
+						'cull-mask':`1`,
+					});
+					shadow_2.addChild(shadow_2_2);
+				}
+				{
+					const shadow_2_3 = this.scene.createElement(xrFrameSystem.XRCamera,{
+						'id':`camera`,
+						'node-id':`camera`,
+						'position':`1 2 4`,
+						'is-clear-color':`false`,
+						'target':`bricksRoot`,
+					});
+					shadow_2.addChild(shadow_2_3);
+				}
+			}
+			{
+				const shadow_3 = this.scene.createElement(xrFrameSystem.XRNode,{
+					'node-id':`lights`,
+				});
+				shadow.addChild(shadow_3);
+				{
+					const shadow_3_0 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`ambient`,
+						'color':`1 1 1`,
+						'intensity':`1`,
+					});
+					shadow_3.addChild(shadow_3_0);
+				}
+				{
+					const shadow_3_1 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`directional`,
+						'rotation':`180 0 0`,
+						'color':`1 1 1`,
+						'intensity':`3`,
+					});
+					shadow_3.addChild(shadow_3_1);
+				}
+			}
       this.cubeGeometry = this.scene.assets.getAsset("geometry", "cube");
       this.bricksRoot = this.scene.getElementById("bricksRoot");
       console.log('xr-scene', xrScene);

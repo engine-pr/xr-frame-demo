@@ -1,4 +1,5 @@
 Component({
+  behaviors: [require('../../common/share-behavior').default],
   innerInterval: 0,
   videoId: -1,
   properties: {

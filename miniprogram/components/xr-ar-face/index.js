@@ -1,16 +1,149 @@
 Component({
-  //behaviors: [require('../common/share-behavior').default],
+  behaviors: [require('../common/share-behavior').default],
   data: {
     loaded: false,
     arReady: false,
   },
-  properties:{
-    width:Number,
-    height:Number,
-  },
   methods: {
     handleReady({detail}) {
       const xrScene = this.scene = detail.value;
+      const xrFrameSystem = wx.getXrFrameSystem();
+      const shadow = this.scene.getElementById('shadow');
+			{
+				const shadow_0 = this.scene.createElement(xrFrameSystem.XRAssets,{
+				});
+				shadow_0.event.add('progress',(e)=>{
+					this.handleAssetsProgress({detail:{value:e}});
+				});
+				shadow_0.event.add('loaded',(e)=>{
+					this.handleAssetsLoaded({detail:{value:e}});
+				});
+				shadow.addChild(shadow_0);
+			}
+			{
+				const shadow_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+					'wx:if':`${this.data.arReady}`,
+				});
+				shadow.addChild(shadow_1);
+				{
+					const shadow_1_0 = this.scene.createElement(xrFrameSystem.XRArTracker,{
+						'id':`tracker`,
+						'mode':`Face`,
+						'auto-sync':`-1 105 104 45 98`,
+					});
+					shadow_1.addChild(shadow_1_0);
+					{
+						const shadow_1_0_0 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'name':`face`,
+							'geometry':`cube`,
+							'scale':`0.7 0.8 0.1`,
+							'uniforms':`u_baseColorFactor:1 1 1 0.5`,
+							'states':`renderQueue:2500,alphaMode:BLEND`,
+						});
+						shadow_1_0.addChild(shadow_1_0_0);
+					}
+					{
+						const shadow_1_0_1 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'name':`eyeL`,
+							'geometry':`cube`,
+							'scale':`0.1 0.1 0.1`,
+							'uniforms':`u_baseColorFactor:0 1 0 1`,
+						});
+						shadow_1_0.addChild(shadow_1_0_1);
+					}
+					{
+						const shadow_1_0_2 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'name':`eyeR`,
+							'geometry':`cube`,
+							'scale':`0.1 0.1 0.1`,
+							'uniforms':`u_baseColorFactor:0 1 0 1`,
+						});
+						shadow_1_0.addChild(shadow_1_0_2);
+					}
+					{
+						const shadow_1_0_3 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'name':`nose`,
+							'geometry':`cube`,
+							'scale':`0.1 0.1 0.1`,
+							'uniforms':`u_baseColorFactor:0 0 1 1`,
+						});
+						shadow_1_0.addChild(shadow_1_0_3);
+					}
+					{
+						const shadow_1_0_4 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'name':`mouth`,
+							'geometry':`cube`,
+							'scale':`0.1 0.1 0.1`,
+							'uniforms':`u_baseColorFactor:1 0 0 1`,
+						});
+						shadow_1_0.addChild(shadow_1_0_4);
+					}
+					{
+						const shadow_1_0_5 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'node-id':`mesh-x`,
+							'position':`1 0 0`,
+							'scale':`2 0.02 0.02`,
+							'geometry':`cube`,
+							'uniforms':`u_baseColorFactor:0.7 0.3 0.3 1`,
+						});
+						shadow_1_0.addChild(shadow_1_0_5);
+					}
+					{
+						const shadow_1_0_6 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'node-id':`mesh-y`,
+							'position':`0 1 0`,
+							'scale':`0.02 2 0.02`,
+							'geometry':`cube`,
+							'uniforms':`u_baseColorFactor:0.3 0.7 0.3 1`,
+						});
+						shadow_1_0.addChild(shadow_1_0_6);
+					}
+					{
+						const shadow_1_0_7 = this.scene.createElement(xrFrameSystem.XRMesh,{
+							'node-id':`mesh-z`,
+							'position':`0 0 1`,
+							'scale':`0.02 0.02 2`,
+							'geometry':`cube`,
+							'uniforms':`u_baseColorFactor:0.3 0.3 0.7 1`,
+						});
+						shadow_1_0.addChild(shadow_1_0_7);
+					}
+				}
+				{
+					const shadow_1_1 = this.scene.createElement(xrFrameSystem.XRCamera,{
+						'id':`camera`,
+						'node-id':`camera`,
+						'clear-color':`0.925 0.925 0.925 1`,
+						'background':`ar`,
+						'is-ar-camera':``,
+						'near':`0.01`,
+					});
+					shadow_1.addChild(shadow_1_1);
+				}
+			}
+			{
+				const shadow_2 = this.scene.createElement(xrFrameSystem.XRNode,{
+					'node-id':`lights`,
+				});
+				shadow.addChild(shadow_2);
+				{
+					const shadow_2_0 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`ambient`,
+						'color':`1 1 1`,
+						'intensity':`1`,
+					});
+					shadow_2.addChild(shadow_2_0);
+				}
+				{
+					const shadow_2_1 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`directional`,
+						'rotation':`180 0 0`,
+						'color':`1 1 1`,
+						'intensity':`3`,
+					});
+					shadow_2.addChild(shadow_2_1);
+				}
+			}
       xrScene.event.add('tick', this.handleTick.bind(this));
       console.log('xr-scene', xrScene);
     },

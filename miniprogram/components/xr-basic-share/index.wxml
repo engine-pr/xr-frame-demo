@@ -1,18 +1,3 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" bind:ready="handleReady">
-  <my-asset-load type="gltf" asset-id="clock" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/clock/scene.gltf" />
-
-  <my-light type="ambient" color="1 1 1" intensity="1" />
-  <my-light type="directional" rotation="40 70 0" color="1 1 1" intensity="3" cast-shadow />
-
-  <slot></slot>
-  
-  <my-gltf model="clock" scale="0.1 0.1 0.1" rotation="90 0 0" anim-autoplay />
-
-  <my-node node-id="target"></my-node>
-  <my-camera node-id="camera" clear-color="0.4 0.8 0.6 1" position="0 0 4" target="target" camera-orbit-control />
-</my-scene>
+<xr-scene bind:ready="handleReady">
+  <xr-shadow id="shadow"></xr-shadow>
+</xr-scene>

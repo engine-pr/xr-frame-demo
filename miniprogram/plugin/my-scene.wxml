@@ -1,8 +1,0 @@
-<xr-scene bind:ready="onekit_handleReady" render-system="{{renderSystem}}" bind:tick="onekit_handleTick">
-  <xr-shadow id="onekit-root"></xr-shadow>
-</xr-scene>
-<text style="visibility:hidden;" bindonekit_add="onekit_add">
-
-  <slot></slot>
-  
-</text>

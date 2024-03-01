@@ -1,28 +1,3 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" ar-system="modes:OSD" id="xr-scene" bind:ready="handleReady" bind:ar-ready="handleARReady" bind:log="handleLog">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-load type="gltf" asset-id="gltf-burger" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/damage-helmet/index.glb" />
-  </my-assets>
-  <my-node>
-    <my-node node-id="id2" scale="2 2 2" position="0 0 0"></my-node>
-    <my-ar-tracker mode="OSD" src="{{markerImg}}">
-      <my-mesh geometry="plane" rotation="-90 0 0" scale="1 1 1" uniforms="u_baseColorFactor:0 1 0 0.5" states="alphaMode:BLEND" />
-      <!-- 坐标系提示，单位1 的坐标轴 -->
-      <my-mesh node-id="mesh-x" position="1 0 0"  scale="2 0.02 0.02" geometry="cube" uniforms="u_baseColorFactor:0.7 0.3 0.3 1" ></my-mesh>
-      <my-mesh node-id="mesh-y" position="0 1 0"  scale="0.02 2 0.02" geometry="cube" uniforms="u_baseColorFactor:0.3 0.7 0.3 1"></my-mesh>
-      <my-mesh node-id="mesh-z" position="0 0 1"  scale="0.02 0.02 2" geometry="cube" uniforms="u_baseColorFactor:0.3 0.3 0.7 1"></my-mesh>
-    </my-ar-tracker>
-    <my-camera
-      id="camera" node-id="camera" clear-color="0.925 0.925 0.925 1"
-      background="ar" is-ar-camera
-    ></my-camera>
-  </my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="1 1 1" intensity="1" />
-    <my-light type="directional" rotation="180 0 0" color="1 1 1" intensity="3" />
-  </my-node>
-</my-scene>
+<xr-scene ar-system="modes:OSD" id="xr-scene" bind:ready="handleReady" bind:ar-ready="handleARReady" bind:log="handleLog">
+  <xr-shadow id="shadow"></xr-shadow>
+</xr-scene>

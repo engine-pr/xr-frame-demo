@@ -5,7 +5,6 @@
 // import './xr-custom/assets/effect-shining';
 // import './xr-custom/elements/xr-shining-star';
 // import './xr-custom/assets/effect-last-record-final';
-import "./plugin/index"
 
 App<IAppOption>({
   globalData: {},

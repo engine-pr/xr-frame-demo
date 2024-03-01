@@ -19,7 +19,6 @@ Page({
     this.setData({positions: info});
   },
   handleRun: function() {
-    
     if (this.data.loaded && !this.data.run) {
       this.setData({run: true});
     }

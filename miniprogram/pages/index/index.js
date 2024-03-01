@@ -25,6 +25,10 @@ Page({
     root: ''
   },
   onLoad() {
+    /*wx.navigateTo({
+      url: '/pages/basic/scene-basic-postprocessing/index',
+    })
+    return*/
     if (first) {
       console.log('Entry xr-frame index page');
       wx.reportEvent("xr_frame", {
@@ -32,9 +36,6 @@ Page({
       });
       first = false;
     }
-  //  wx.navigateTo({
-//   url:'/pages/basic/scene-basic-alpha/index'
-  //})
   },
   onShareAppMessage() {
     return {

@@ -126,6 +126,325 @@ Component({
   methods: {
     handleReady({detail}) {
       this.scene = detail.value;
+      const xrFrameSystem = wx.getXrFrameSystem();
+      const shadow = this.scene.getElementById('shadow');
+			{
+				const shadow_0 = this.scene.createElement(xrFrameSystem.XRAssets,{
+				});
+				shadow_0.event.add('loaded',(e)=>{
+					this.handleAssetsLoaded({detail:{value:e}});
+				});
+				shadow.addChild(shadow_0);
+				{
+					const shadow_0_0 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`loading`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/loading.glb`,
+					});
+					shadow_0.addChild(shadow_0_0);
+				}
+				{
+					const shadow_0_1 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`sky`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/sky.gltf`,
+					});
+					shadow_0.addChild(shadow_0_1);
+				}
+				{
+					const shadow_0_2 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`office`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ggj2023-scene.glb`,
+					});
+					shadow_0.addChild(shadow_0_2);
+				}
+				{
+					const shadow_0_3 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`hikari`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/hikari-unlit.glb`,
+					});
+					shadow_0.addChild(shadow_0_3);
+				}
+				{
+					const shadow_0_4 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`roam`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/roam-unlit.glb`,
+					});
+					shadow_0.addChild(shadow_0_4);
+				}
+				{
+					const shadow_0_5 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`gltf`,
+						'asset-id':`xinyi`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/xinyi-unlit.glb`,
+					});
+					shadow_0.addChild(shadow_0_5);
+				}
+				{
+					const shadow_0_6 = this.scene.createElement(xrFrameSystem.XRAssetLoad,{
+						'type':`texture`,
+						'asset-id':`particle-point`,
+						'src':`https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/particles/point.png`,
+					});
+					shadow_0.addChild(shadow_0_6);
+				}
+			}
+			{
+				const shadow_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+				});
+				shadow.addChild(shadow_1);
+				{
+					const shadow_1_0 = this.scene.createElement(xrFrameSystem.XRNode,{
+						'id':`setitem`,
+						'node-id':`setitem`,
+						'visible':`false`,
+					});
+					shadow_1.addChild(shadow_1_0);
+					{
+						const shadow_1_0_0 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+							'id':`sky`,
+							'model':`sky`,
+							'states':`cullOn: false`,
+						});
+						shadow_1_0.addChild(shadow_1_0_0);
+					}
+					{
+						const shadow_1_0_1 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+							'id':`scene-mesh`,
+							'model':`office`,
+						});
+						shadow_1_0.addChild(shadow_1_0_1);
+					}
+					{
+						const shadow_1_0_2 = this.scene.createElement(xrFrameSystem.XRNode,{
+							'wx:if':`${this.data.step === 0}`,
+							'position':`5.6 -0.5 2.27`,
+						});
+						shadow_1_0.addChild(shadow_1_0_2);
+						{
+							const shadow_1_0_2_0 = this.scene.createElement(xrFrameSystem.XRNode,{
+								'id':`wine`,
+								'wx:if':`${this.data.!subStep}`,
+								'cube-shape':`size:0.2 0.4 1.6`,
+							});
+							shadow_1_0_2_0.event.add('touch-shape',(e)=>{
+								this.handleTouchObj({detail:{value:e}});
+							});
+							shadow_1_0_2.addChild(shadow_1_0_2_0);
+						}
+						{
+							const shadow_1_0_2_1 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+								'id':`xinyi`,
+								'wx:if':`${this.data.subStep}`,
+								'position':`-1.2 -1.8 -0.5`,
+								'rotation':`0 80 0`,
+								'model':`xinyi`,
+								'anim-autoplay':`clip:Idle`,
+								'capsule-shape':`height:1;raduis:0.2;center:0 0.7 0`,
+							});
+							shadow_1_0_2_1.event.add('touch-shape',(e)=>{
+								this.handleTouchChar({detail:{value:e}});
+							});
+							shadow_1_0_2.addChild(shadow_1_0_2_1);
+						}
+					}
+					{
+						const shadow_1_0_3 = this.scene.createElement(xrFrameSystem.XRNode,{
+							'wx:if':`${this.data.step === 1}`,
+							'position':`-3.2 -1.3 -5`,
+						});
+						shadow_1_0.addChild(shadow_1_0_3);
+						{
+							const shadow_1_0_3_0 = this.scene.createElement(xrFrameSystem.XRNode,{
+								'id':`vending`,
+								'wx:if':`${this.data.!subStep}`,
+								'rotation':`0 0 0`,
+								'cube-shape':`size:2 2 0.4`,
+							});
+							shadow_1_0_3_0.event.add('touch-shape',(e)=>{
+								this.handleTouchObj({detail:{value:e}});
+							});
+							shadow_1_0_3.addChild(shadow_1_0_3_0);
+						}
+						{
+							const shadow_1_0_3_1 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+								'id':`roam`,
+								'wx:if':`${this.data.subStep}`,
+								'position':`-0.4 -1 0.6`,
+								'rotation':`0 180 0`,
+								'model':`roam`,
+								'anim-autoplay':`clip:Idle`,
+								'capsule-shape':`height:1;raduis:0.2;center:0 0.7 0`,
+							});
+							shadow_1_0_3_1.event.add('touch-shape',(e)=>{
+								this.handleTouchChar({detail:{value:e}});
+							});
+							shadow_1_0_3.addChild(shadow_1_0_3_1);
+						}
+					}
+					{
+						const shadow_1_0_4 = this.scene.createElement(xrFrameSystem.XRNode,{
+							'wx:if':`${this.data.step === 2}`,
+							'position':`-5.7 -1.17 4.47`,
+						});
+						shadow_1_0.addChild(shadow_1_0_4);
+						{
+							const shadow_1_0_4_0 = this.scene.createElement(xrFrameSystem.XRNode,{
+								'id':`corner`,
+								'wx:if':`${this.data.!subStep}`,
+								'cube-shape':`size:1 1 1`,
+							});
+							shadow_1_0_4_0.event.add('touch-shape',(e)=>{
+								this.handleTouchObj({detail:{value:e}});
+							});
+							shadow_1_0_4.addChild(shadow_1_0_4_0);
+						}
+						{
+							const shadow_1_0_4_1 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+								'id':`hikari`,
+								'wx:if':`${this.data.subStep}`,
+								'position':`1.5 -0.6 -0.6`,
+								'rotation':`0 90 0`,
+								'model':`hikari`,
+								'anim-autoplay':`clip:Idle`,
+								'capsule-shape':`height:1;raduis:0.2;center:0 0.7 0`,
+							});
+							shadow_1_0_4_1.event.add('touch-shape',(e)=>{
+								this.handleTouchChar({detail:{value:e}});
+							});
+							shadow_1_0_4.addChild(shadow_1_0_4_1);
+						}
+					}
+					{
+						const shadow_1_0_5 = this.scene.createElement(xrFrameSystem.XRNode,{
+							'wx:if':`${this.data.step === 3}`,
+							'position':`0 -2 -4.5`,
+						});
+						shadow_1_0.addChild(shadow_1_0_5);
+						{
+							const shadow_1_0_5_0 = this.scene.createElement(xrFrameSystem.XRNode,{
+								'id':`sofa`,
+								'wx:if':`${this.data.!subStep}`,
+								'rotation':`0 16 0`,
+								'cube-shape':`size:2 0.6 1`,
+							});
+							shadow_1_0_5_0.event.add('touch-shape',(e)=>{
+								this.handleTouchObj({detail:{value:e}});
+							});
+							shadow_1_0_5.addChild(shadow_1_0_5_0);
+						}
+						{
+							const shadow_1_0_5_1 = this.scene.createElement(xrFrameSystem.XRNode,{
+								'wx:if':`${this.data.subStep}`,
+								'position':`0 -0.4 0.2`,
+							});
+							shadow_1_0_5.addChild(shadow_1_0_5_1);
+							{
+								const shadow_1_0_5_1_0 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+									'id':`xinyi`,
+									'position':`-0.6 0 0`,
+									'rotation':`0 180 0`,
+									'model':`xinyi`,
+									'anim-autoplay':`clip:Sitting`,
+									'capsule-shape':`height:1;raduis:0.2;center:0 0.7 0`,
+								});
+								shadow_1_0_5_1_0.event.add('touch-shape',(e)=>{
+									this.handleTouchChar({detail:{value:e}});
+								});
+								shadow_1_0_5_1.addChild(shadow_1_0_5_1_0);
+							}
+							{
+								const shadow_1_0_5_1_1 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+									'id':`roam`,
+									'position':`0.6 0 0`,
+									'rotation':`0 180 0`,
+									'model':`roam`,
+									'anim-autoplay':`clip:Sitting`,
+									'capsule-shape':`height:1;raduis:0.2;center:0 0.7 0`,
+								});
+								shadow_1_0_5_1_1.event.add('touch-shape',(e)=>{
+									this.handleTouchChar({detail:{value:e}});
+								});
+								shadow_1_0_5_1.addChild(shadow_1_0_5_1_1);
+							}
+							{
+								const shadow_1_0_5_1_2 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+									'id':`hikari`,
+									'position':`0 0 0`,
+									'rotation':`0 180 0`,
+									'model':`hikari`,
+									'anim-autoplay':`clip:Sitting`,
+									'capsule-shape':`height:1;raduis:0.2;center:0 0.7 0`,
+								});
+								shadow_1_0_5_1_2.event.add('touch-shape',(e)=>{
+									this.handleTouchChar({detail:{value:e}});
+								});
+								shadow_1_0_5_1.addChild(shadow_1_0_5_1_2);
+							}
+						}
+					}
+				}
+				{
+					const shadow_1_1 = this.scene.createElement(xrFrameSystem.XRAssetPostProcess,{
+						'asset-id':`blur`,
+						'type':`blur`,
+						'data':`radius:0`,
+					});
+					shadow_1.addChild(shadow_1_1);
+				}
+				{
+					const shadow_1_2 = this.scene.createElement(xrFrameSystem.XRCamera,{
+						'id':`main-camera`,
+						'node-id':`main-camera`,
+						'background':`ar`,
+						'is-ar-camera':``,
+						'near':`0.1`,
+						'far':`2000`,
+						'clear-color':`0 0 0 1`,
+						'post-process':`blur`,
+					});
+					shadow_1.addChild(shadow_1_2);
+					{
+						const shadow_1_2_0 = this.scene.createElement(xrFrameSystem.XRGLTF,{
+							'wx:if':`${this.data.arReady && !loaded}`,
+							'position':`0 0 10`,
+							'model':`loading`,
+							'anim-autoplay':``,
+						});
+						shadow_1_2.addChild(shadow_1_2_0);
+					}
+				}
+			}
+			{
+				const shadow_2 = this.scene.createElement(xrFrameSystem.XRNode,{
+					'node-id':`lights`,
+				});
+				shadow.addChild(shadow_2);
+				{
+					const shadow_2_0 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'type':`ambient`,
+						'color':`1 1 1`,
+						'intensity':`${this.data.ambient}`,
+					});
+					shadow_2.addChild(shadow_2_0);
+				}
+				{
+					const shadow_2_1 = this.scene.createElement(xrFrameSystem.XRLight,{
+						'node-id':`light`,
+						'type':`spot`,
+						'color':`1 1 1`,
+						'intensity':`4`,
+						'inner-cone-angle':`5`,
+						'outer-cone-angle':`25`,
+						'range':`4`,
+						'wx:if':`${this.data.step < 3}`,
+					});
+					shadow_2.addChild(shadow_2_1);
+				}
+			}
       this.scene.event.add('tick', this.handleTick.bind(this));
       this.inited = false;
       this.disable3DTouch = false;

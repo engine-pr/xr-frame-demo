@@ -1,25 +1,3 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-load type="gltf" asset-id="gltf" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/compress-textures-test/gltf/index.gltf" />
-    <my-asset-load type="gltf" asset-id="glb" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/compress-textures-test/glb/index.glb" />
-  </my-assets>
-  <my-node>
-    <my-node node-id="camera-target" position="0 0 0"></my-node>
-    <my-gltf position="-5 0 0" model="gltf"></my-gltf>
-    <my-gltf position="5 0 0" model="glb"></my-gltf>
-    <my-camera
-      position="0 0 -20" clear-color="0.9 0.9 0.9 1"
-      target="camera-target"
-      camera-orbit-control=""
-    ></my-camera>
-  </my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="1 1 1" intensity="0.3" />
-    <my-light type="directional" rotation="180 0 0" color="1 1 1" intensity="2" />
-  </my-node>
-</my-scene>
+<xr-scene id="xr-scene" bind:ready="handleReady">
+  <xr-shadow id="shadow"></xr-shadow>
+</xr-scene>

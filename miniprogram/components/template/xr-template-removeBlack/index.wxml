@@ -1,36 +1,31 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-load
+<xr-scene id="xr-scene" bind:ready="handleReady">
+  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <xr-asset-load
       type="video-texture" asset-id="test2"
       src="https://h5-project.oss-cn-shenzhen.aliyuncs.com/XR/test2.mp4" options="autoPlay:true,loop:true"
     />
-    <my-asset-material asset-id="removeBlack-mat" effect="removeBlack" />
-  </my-assets>
-  <my-node>
-    <my-node node-id="camera-target" position="0 0 0"></my-node>
-    <my-node wx:if="{{loaded}}">
-      <my-mesh node-id="floor-plane" position="0 -1 0" rotation="0 0 0" scale="10 1 10" geometry="plane"
+    <xr-asset-material asset-id="removeBlack-mat" effect="removeBlack" />
+  </xr-assets>
+  <xr-node>
+    <xr-node node-id="camera-target" position="0 0 0"></xr-node>
+    <xr-node wx:if="{{loaded}}">
+      <xr-mesh node-id="floor-plane" position="0 -1 0" rotation="0 0 0" scale="10 1 10" geometry="plane"
         uniforms="u_baseColorFactor:1 1 1 1"
-      ></my-mesh>
-      <my-mesh node-id="video-item" position="0 0 0" rotation="90 0 0" scale="2 2 2" geometry="plane"
+      ></xr-mesh>
+      <xr-mesh node-id="video-item" position="0 0 0" rotation="90 0 0" scale="2 2 2" geometry="plane"
         material="removeBlack-mat"
         uniforms="u_videoMap: video-test2"
         states="renderQueue:2500"
-      ></my-mesh>
-    </my-node>
-    <my-camera
+      ></xr-mesh>
+    </xr-node>
+    <xr-camera
       id="camera" node-id="camera" position="2 2 4" clear-color="0.925 0.925 0.925 1"
       target="camera-target"
       camera-orbit-control=""
-    ></my-camera>
-  </my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="1 1 1" intensity="1" />
-    <my-light type="directional" rotation="40 170 0" color="1 1 1" intensity="3" cast-shadow/>
-  </my-node>
-</my-scene>
+    ></xr-camera>
+  </xr-node>
+  <xr-node node-id="lights">
+    <xr-light type="ambient" color="1 1 1" intensity="1" />
+    <xr-light type="directional" rotation="40 170 0" color="1 1 1" intensity="3" cast-shadow/>
+  </xr-node>
+</xr-scene>

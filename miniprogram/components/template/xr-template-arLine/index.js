@@ -11,6 +11,7 @@ const colorPattern2 = [
   [0.745, 1, 0.969],
 ]
 Component({
+  behaviors: [require('../../common/share-behavior').default],
   properties: {
     a: Number,
   },

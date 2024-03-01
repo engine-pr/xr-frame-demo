@@ -8,12 +8,11 @@
   </view>
 
   <pull-down-list
-    wx:key="label"
     wx:for="{{list}}"
     name="{{item.name}}"
     tag="{{item.tag}}"
     root="{{root}}"
-    wx:key="name"
+    wx:key="path"
     childArr="{{item.childArr}}"
     bind:click="clickHandle"
   />

@@ -1,8 +1,6 @@
 Component({
-    //behaviors: [require('../common/share-behavior').default],
+  behaviors: [require('../common/share-behavior').default],
   properties: {
-    width:Number,
-    height:Number,
     capacity: {
       type: Number,
       value: 20

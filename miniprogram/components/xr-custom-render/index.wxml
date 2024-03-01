@@ -1,26 +1,3 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-load type="texture" asset-id="waifu" src="/assets/waifu.png" />
-    <my-asset-material asset-id="shining-mat" effect="shining" uniforms="u_color:1 1 0 1" />
-  </my-assets>
-  <my-node node-id="target">
-    <my-mesh geometry="star" material="shining-mat" rotation="90 0 0" />
-    <my-node wx:for="{{stars}}" wx:for-item="star">
-      <my-shining-star rotation="90 0 0" position="{{star.pos}}" uniforms="u_color:{{star.color}},u_reflection:waifu,u_speed:{{star.speed}}" />
-    </my-node>
-    <my-camera
-      id="camera" node-id="camera" position="0 0 10" clear-color="0.4 0.6 0.7 1"
-      background="default" target="target"
-      camera-orbit-control=""
-    ></my-camera>
-  </my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="{{test}}}" intensity="1" />
-    <my-light type="directional" rotation="40 170 0" color="1 1 1" intensity="3" />
-  </my-node>
-</my-scene>
+<xr-scene id="xr-scene" bind:ready="handleReady">
+  <xr-shadow id="shadow"></xr-shadow>
+</xr-scene>

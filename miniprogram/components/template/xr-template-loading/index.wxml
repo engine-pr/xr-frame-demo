@@ -1,93 +1,88 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-material asset-id="standard-mat" effect="standard" />
-  </my-assets>
-  <my-node>
-    <my-node node-id="camera-target" position="0 0 0"></my-node>
-    <my-mesh node-id="floor-plane" position="0 -1 0" rotation="0 0 0" scale="10 1 10" geometry="plane"
+<xr-scene id="xr-scene" bind:ready="handleReady">
+  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <xr-asset-material asset-id="standard-mat" effect="standard" />
+  </xr-assets>
+  <xr-node>
+    <xr-node node-id="camera-target" position="0 0 0"></xr-node>
+    <xr-mesh node-id="floor-plane" position="0 -1 0" rotation="0 0 0" scale="10 1 10" geometry="plane"
       uniforms="u_baseColorFactor:1 1 1 1" receive-shadow
-    ></my-mesh>
+    ></xr-mesh>
     <!-- glTF -->
-    <my-node wx:if="{{gltfLoaded}}">
-      <my-node
+    <xr-node wx:if="{{gltfLoaded}}">
+      <xr-node
         wx:for="{{gltfIdList}}" wx:for-item="gltfId"
         wx:key="gltfId"
       >
-        <my-gltf
+        <xr-gltf
           wx:if="{{gltfId == 0}}"
           position="-1 -0.46 -1" rotation="0 0 0"
           scale="0.6 0.6 0.6"
           model="gltf-{{gltfId}}"
           cast-shadow
-        ></my-gltf>
-        <my-gltf
+        ></xr-gltf>
+        <xr-gltf
           wx:if="{{gltfId == 1}}"
           position="1 -0.98 -1" rotation="0 0 0"
           scale="0.015 0.015 0.015"
           model="gltf-{{gltfId}}"
           cast-shadow
-        ></my-gltf>
-      </my-node>
-    </my-node>
+        ></xr-gltf>
+      </xr-node>
+    </xr-node>
     <!-- Image -->
-    <my-node wx:if="{{imageLoaded}}">
-      <my-node
+    <xr-node wx:if="{{imageLoaded}}">
+      <xr-node
         wx:for="{{imageIdList}}" wx:for-item="imageId"
         wx:key="imageId"
       >
-        <my-mesh
+        <xr-mesh
           wx:if="{{imageId === 2}}"
           position="1 1 0" scale="1 1 0.2"
           geometry="cube"  material="texture-mat-{{imageId}}"
           cast-shadow
         />
-        <my-mesh
+        <xr-mesh
           wx:if="{{imageId === 3}}"
           position="-1 1 0" scale="1 1 0.2"
           geometry="cube" material="texture-mat-{{imageId}}"
           cast-shadow
         />
-      </my-node>
-    </my-node>
+      </xr-node>
+    </xr-node>
     <!-- Video -->
-    <my-node wx:if="{{videoLoaded}}">
-      <my-node
+    <xr-node wx:if="{{videoLoaded}}">
+      <xr-node
         wx:for="{{videoIdList}}" wx:for-item="videoId"
         wx:key="videoId"
       >
-      <my-mesh
+      <xr-mesh
         wx:if="{{videoId === 4}}"
         node-id="mesh-cube" position="0 -0.5 1" scale="0.8 1.4 0.8"
         geometry="cube" material="video-mat-{{videoId}}"
         cast-shadow
       />
-      <my-mesh
+      <xr-mesh
         wx:if="{{videoId === 5}}"
         node-id="mesh-cube" position="-1.5 -0.6 1" scale="1.2 0.8 0.8"
         geometry="cube" material="video-mat-{{videoId}}"
         cast-shadow
       />
-      <my-mesh
+      <xr-mesh
         wx:if="{{videoId === 6}}"
         node-id="mesh-cube" position="1.5 -0.6 1" scale="1.2 0.8 0.8"
         geometry="cube" material="video-mat-{{videoId}}"
         cast-shadow
       />
-      </my-node>
-    </my-node>
-    <my-camera
+      </xr-node>
+    </xr-node>
+    <xr-camera
       id="camera" node-id="camera" position="0 3 5" clear-color="0.8 0.8 0.8 1"
       target="camera-target"
       camera-orbit-control=""
-    ></my-camera>
-  </my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="1 1 1" intensity="1" />
-    <my-light type="directional" rotation="40 170 0" color="1 1 1" intensity="3" cast-shadow/>
-  </my-node>
-</my-scene>
+    ></xr-camera>
+  </xr-node>
+  <xr-node node-id="lights">
+    <xr-light type="ambient" color="1 1 1" intensity="1" />
+    <xr-light type="directional" rotation="40 170 0" color="1 1 1" intensity="3" cast-shadow/>
+  </xr-node>
+</xr-scene>

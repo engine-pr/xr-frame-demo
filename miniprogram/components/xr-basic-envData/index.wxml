@@ -1,34 +1,3 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" id="xr-scene">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-load type="env-data" asset-id="sunSet" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/env-test.bin"/>
-  </my-assets>
-  <my-env env-data="xr-frame-team-workspace-day"/>
-  <my-node wx:if="{{loaded}}">
-    <my-node node-id="center" position="0 0 0"></my-node>
-
-    <!-- 基础反光小球  -->
-    <my-mesh node-id="basic-roughness" position="-1.1 0 -1.1" geometry="sphere"  uniforms="u_metallicRoughnessValues: 0 0"></my-mesh>
-    <my-mesh node-id="basic-metal" position="1.1 0 -1.1" geometry="sphere"  uniforms="u_metallicRoughnessValues: 1 0"></my-mesh>
-
-    <!-- 使用环境数据需要保证资源已经加载完  -->
-    <my-mesh node-id="sunSet-roughness" env-data="sunSet" position="-1.1 0 1.1" scale="1 1 1" geometry="sphere"  uniforms="u_metallicRoughnessValues: 0 0"></my-mesh>
-    <my-mesh node-id="sunSet-metal" env-data="sunSet" position="1.1 0 1.1" scale="1 1 1" geometry="sphere"  uniforms="u_metallicRoughnessValues: 1 0"></my-mesh>
-
-    <my-camera
-      id="camera" node-id="camera" position="4 4 4" clear-color="0.1 0.1 0.1 1"
-      target="center" near="0.1" far="2000" background="skybox"
-      camera-orbit-control=""
-    ></my-camera>
-
-  </my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="1 1 1" intensity="0.3" />
-    <my-light type="directional" rotation="20 120 0" color="1 1 1" intensity="1" />
-  </my-node>
-
-</my-scene>
+<xr-scene id="xr-scene">
+  <xr-shadow id="shadow"></xr-shadow>
+</xr-scene>

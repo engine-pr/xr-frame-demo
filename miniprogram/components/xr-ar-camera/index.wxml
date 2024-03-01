@@ -1,25 +1,3 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" id="xr-scene" ar-system bind:ready="handleReady" bind:ar-ready="handleARReady" bind:ar-error="handleARError">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-load type="gltf" asset-id="gltf-table" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/metal_table/scene.gltf" />
-  </my-assets>
-  <my-env env-data="gz-haixinsha"/>
-  <my-node>
-    <my-node node-id="camera-target" position="0 0 0"></my-node>
-    <my-node node-id="table-wrap" position="0 0 0">
-      <my-gltf node-id="mesh-gltf-table" position="0 -1 0" rotation="0 45 0" scale="0.5 0.5 0.5" model="gltf-table" />
-    </my-node>
-    <my-camera
-      position="2 1 2" clear-color="0.925 0.925 0.925 1"
-      background="ar" target="camera-target" camera-orbit-control=""
-    />
-  </my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="1 1 1" intensity="0.2" />
-    <my-light type="directional" rotation="180 0 0" color="1 1 1" intensity="2" />
-  </my-node>
-</my-scene>
+<xr-scene id="xr-scene" ar-system bind:ready="handleReady" bind:ar-ready="handleARReady" bind:ar-error="handleARError">
+  <xr-shadow id="shadow"></xr-shadow>
+</xr-scene>

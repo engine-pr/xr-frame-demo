@@ -1,29 +1,24 @@
-<my-scene 
-disable-scroll
-    id="main-frame"
-    width="{{width}}"
-    height="{{height}}"
-    style="width:100%;height:100%;display:block;" id="xr-scene" bind:ready="handleReady" bind:tick="handleTick">
-  <my-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
-    <my-asset-load type="gltf" asset-id="gltf-door" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/door.glb" />
-    <my-asset-load type="gltf" asset-id="gltf-myModel" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/Xbot.glb" />
-  </my-assets>
-<my-node>
-    <my-node node-id="camera-target" position="0 0 0"></my-node>
+<xr-scene id="xr-scene" bind:ready="handleReady" bind:tick="handleTick">
+  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <xr-asset-load type="gltf" asset-id="gltf-door" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/door.glb" />
+    <xr-asset-load type="gltf" asset-id="gltf-myModel" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/Xbot.glb" />
+  </xr-assets>
+<xr-node>
+    <xr-node node-id="camera-target" position="0 0 0"></xr-node>
 
-    <!-- <my-gltf id="door" node-id="door" position="0 0 0" rotation="0 0 0" scale="0.01 0.01 0.01" model="gltf-door"
+    <!-- <xr-gltf id="door" node-id="door" position="0 0 0" rotation="0 0 0" scale="0.01 0.01 0.01" model="gltf-door"
       cube-shape="autoFit:true" shape-gizmo 
       bind:gltf-loaded="handleGltfLoaded"
       sphere-shape="radius: 1.5"
       bind:anim-stop="handleAnimationStop"
-    ></my-gltf> -->
+    ></xr-gltf> -->
 
-    <my-gltf id="myModel" node-id="myModel" position="0 0 0" rotation="0 0 0" scale="1 1 1" model="gltf-myModel" cube-shape="size: 0.5 2 0.5; center: 0 0.8 0" shape-gizmo bind:gltf-loaded="handleGltfLoaded" bind:touch-shape="handleTouchModel"></my-gltf>
+    <xr-gltf id="myModel" node-id="myModel" position="0 0 0" rotation="0 0 0" scale="1 1 1" model="gltf-myModel" cube-shape="size: 0.5 2 0.5; center: 0 0.8 0" shape-gizmo bind:gltf-loaded="handleGltfLoaded" bind:touch-shape="handleTouchModel"></xr-gltf>
 
-    <my-camera id="camera" node-id="camera" position="0 3 4" clear-color="0.1 0.1 0.1 1" target="camera-target" camera-orbit-control=""></my-camera>
-</my-node>
-  <my-node node-id="lights">
-    <my-light type="ambient" color="1 1 1" intensity="1" />
-    <my-light type="directional" rotation="40 170 0" color="1 1 1" intensity="3" cast-shadow />
-  </my-node>
-</my-scene>
+    <xr-camera id="camera" node-id="camera" position="0 3 4" clear-color="0.1 0.1 0.1 1" target="camera-target" camera-orbit-control=""></xr-camera>
+</xr-node>
+  <xr-node node-id="lights">
+    <xr-light type="ambient" color="1 1 1" intensity="1" />
+    <xr-light type="directional" rotation="40 170 0" color="1 1 1" intensity="3" cast-shadow />
+  </xr-node>
+</xr-scene>
